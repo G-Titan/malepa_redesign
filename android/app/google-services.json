@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "457304265367",
+    "firebase_url": "https://malepa-cf855-default-rtdb.firebaseio.com",
+    "project_id": "malepa-cf855",
+    "storage_bucket": "malepa-cf855.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457304265367:android:64bf63b2a5065096278fd2",
+        "android_client_info": {
+          "package_name": "com.example.malepa_redesign"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjHcK2w5-sVgpoLe8En72XA2yHsIVh7Vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
