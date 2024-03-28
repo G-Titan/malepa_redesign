@@ -1,24 +1,3 @@
-Skip to main text
-Free Software Supporter: 
-email address
- 	JOIN THE FSF
- [A GNU head] GNU Operating System
-Supported by the Free Software Foundation
- [Search www.gnu.org]   [Other languages] 
-ABOUT GNU PHILOSOPHY LICENSES EDUCATION SOFTWARE DISTROS DOCS MALWARE HELP GNU AUDIO & VIDEO GNU ART FUN GNU'S WHO? SOFTWARE DIRECTORY HARDWARE SITEMAP
-GNU General Public License
- [GPLv3 Logo] 
-Skip to license text
-
-A Quick Guide to GPLv3
-Why Upgrade to GPLv3
-Frequently Asked Questions about the GNU licenses
-How to use GNU licenses for your own software
-Translations of the GPL
-The GPL in other formats: plain text, Texinfo, LaTeX, standalone HTML, ODF, Docbook v4 or v5, reStructuredText, Markdown, and RTF.
-GPLv3 logos to use with your project
-Old versions of the GNU GPL
-What to do if you see a possible GPL violation
 GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
 
@@ -238,19 +217,3 @@ The hypothetical commands `show w' and `show c' should show the appropriate part
 You should also get your employer (if you work as a programmer) or school, if any, to sign a “copyright disclaimer” for the program, if necessary. For more information on this, and how to apply and follow the GNU GPL, see <https://www.gnu.org/licenses/>.
 
 The GNU General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License. But first, please read <https://www.gnu.org/licenses/why-not-lgpl.html>.
-
-▲
- [FSF logo] “The Free Software Foundation (FSF) is a nonprofit with a worldwide mission to promote computer user freedom. We defend the rights of all software users.”
-
-JOIN DONATE SHOP
-Please send general FSF & GNU inquiries to <gnu@gnu.org>. There are also other ways to contact the FSF. Broken links and other corrections or suggestions can be sent to <webmasters@gnu.org>.
-
-Please see the Translations README for information on coordinating and contributing translations of this article.
-
-Copyright notice above.
-
-Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
-
-Copyright Infringement Notification
-
-Updated: $Date: 2023/11/30 09:46:01 $
