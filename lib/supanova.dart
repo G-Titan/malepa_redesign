@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:malepa_redesign/services/AuthService.dart';
+import 'package:malepa_redesign/users/standard/FreeTier.dart';
+import 'package:flutter/foundation.dart'; // Import the kIsDebug constant
 
 class SupaNova extends StatefulWidget {
   const SupaNova({super.key});
@@ -23,20 +25,30 @@ class _SupaNovaState extends State<SupaNova> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
+            DrawerHeader(
+              decoration: const BoxDecoration(
                 color: Colors.blue,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage('assets/images/profile.jpg'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FreeTier()),
+                      );
+                    },
+                    child: const CircleAvatar(
+                      radius: 30,
+                      // Change the profile picture placeholder to an icon
+                      child: Icon(Icons.person),
+                    ),
                   ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Username',
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Admin mode',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -93,8 +105,11 @@ class _SupaNovaState extends State<SupaNova> {
               children: [
                 IconButton(
                   onPressed: () {
-                    // Navigate to Profile Settings screen
-                    print('Navigate to Profile Settings');
+                    // Navigate to the FreeTier.dart file
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FreeTier()),
+                    );
                   },
                   icon: const Icon(Icons.account_circle),
                   iconSize: 40,

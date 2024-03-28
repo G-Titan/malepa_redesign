@@ -20,6 +20,12 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "INE LX1r",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
         }
     ]
 }

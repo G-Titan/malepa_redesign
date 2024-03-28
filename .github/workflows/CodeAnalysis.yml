@@ -1,0 +1,33 @@
+name: Code Analysis
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  dart-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.19.3" # Specify the Flutter version you want to use
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run Dart Analyzer
+        run: flutter analyze
+
+      - name: Run Dart Linter
+        run: flutter analyze --no-pub --rules
+
+  # Add additional jobs for other analysis tools if needed

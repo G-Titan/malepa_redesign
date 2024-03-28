@@ -1,16 +1,45 @@
-# malepa_redesign
+# BEC SERVICE [MALEPA] REDESIGN
 
-A new Flutter project.
+A project funded by God
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point of rebuilding an educational grading system running 1990 < 2020 technology
 
-A few resources to get you started if this is your first Flutter project:
+## Original website
+https://malepa.bec.co.bw/MALEPAGeneral/
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+## Features of original website
+- Registration, Exam management, reports and allocation
+
+## Pain points
+ - Small text
+ - Manual input
+ - Less user friendly
+ - Goes down periodically
+
+## WHAT'S NEW WITH THIS ONE?
+ - Downtimes almost none existant
+ - Web dependability reduced by 60%
+ - Runs on any device
+ - Fluent UI and clearer text
+
+## How to access or use the new system
+ - Website link: (demo version release date: 6/Apr/2024)
+
+ - Android support: https://github.com/G-Titan/malepa_redesign/releases
+
+ - Windows support: (demo release date 6/May/2024)
+
+ - IOS support: (This build may run on any device but we decided to completely not support this platform. it's an organisational choice. if you want it, build it yourself)
+
+ - Linux support: (Demo release date 6/May/2024)
+
+If you dont know what your device is using visit our website (https://citynest.github.io/Life/) for more information on how to check your operating system information.... 
+
+Yeh that's a prank.
+
+- [Lab: A playground for you to get started](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For help getting on pull requests and merges best to contact me personally
