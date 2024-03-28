@@ -20,4 +20,4 @@ We expect all contributors, maintainers, and users of our project to adhere to o
 
 ## Contact Us
 
-If you have any questions or concerns about our security policy or any security-related matters, please contact us at [security@example.com](mailto:security@example.com).
+If you have any questions or concerns about our security policy or any security-related matters, please contact us at [Gmail](mailto:kevinmanda92@gmail.com).
