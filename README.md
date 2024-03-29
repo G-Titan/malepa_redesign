@@ -42,4 +42,4 @@ Yeh that's a prank.
 - [Lab: A playground for you to get started](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting on pull requests and merges best to contact me personally
+For help getting on pull requests and merges best to contact me [personally](mailto:kevinmanda92@gmail.com)
