@@ -28,7 +28,7 @@ This project is a starting point of rebuilding an educational grading system run
  - Fluent UI and clearer text
 
 ## Platform support
- - Website link: (demo version release date: 6/Apr/2024)
+ - Website link: [All platforms](https://g-titan.github.io/malepa_redesign/)
  - Android support: https://github.com/G-Titan/malepa_redesign/releases
  - Windows support: (demo release date 6/May/2024)
  - IOS support: (This build may run on any device but we decided to completely not support this platform. it's an organisational choice. if you want it, build it yourself or give me money)
