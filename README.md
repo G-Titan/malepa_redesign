@@ -45,7 +45,7 @@ Yeh that's a prank.
 For help getting on pull requests and merges best to contact me [personally](mailto:kevinmanda92@gmail.com)
 
 ## PREVIEW
-<img src="./assets/images/begin.jpg" width="200" height="400"><img src="./assets/images/login.jpg" width="200" height="400">
+<img src="./assets/images/begin.jpg" width="200" height="400">  <img src="./assets/images/login.jpg" width="200" height="400">
 
 
-<img src="./assets/images/home.jpg" width="200" height="400"><img src="./assets/images/where2.jpg" width="200" height="400">
+<img src="./assets/images/home.jpg" width="200" height="400">  <img src="./assets/images/where2.jpg" width="200" height="400">
