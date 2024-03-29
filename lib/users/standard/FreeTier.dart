@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FreeTier extends StatelessWidget {
-  const FreeTier({Key? key}) : super(key: key);
+  const FreeTier({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +14,17 @@ class FreeTier extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Add your account management widgets here
-            Text(
+            const Text(
               'Welcome to the Free Tier Account Manager!',
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Implement logic for managing free tier accounts
                 print('Manage Accounts');
               },
-              child: Text('Manage Accounts'),
+              child: const Text('Manage Accounts'),
             ),
           ],
         ),

@@ -190,7 +190,7 @@ class AuthService {
     } catch (error) {
       // Handle any errors that occur during logout
       print('Error logging out: $error');
-      throw error; // Re-throw the error to be caught by the caller
+      rethrow; // Re-throw the error to be caught by the caller
     }
   }
 }

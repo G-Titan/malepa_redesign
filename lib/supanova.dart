@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:malepa_redesign/services/AuthService.dart';
 import 'package:malepa_redesign/users/standard/FreeTier.dart';
-import 'package:flutter/foundation.dart'; // Import the kIsDebug constant
+// Import the kIsDebug constant
 
 class SupaNova extends StatefulWidget {
   const SupaNova({super.key});
@@ -108,7 +108,7 @@ class _SupaNovaState extends State<SupaNova> {
                     // Navigate to the FreeTier.dart file
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => FreeTier()),
+                      MaterialPageRoute(builder: (context) => const FreeTier()),
                     );
                   },
                   icon: const Icon(Icons.account_circle),
