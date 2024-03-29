@@ -45,9 +45,7 @@ Yeh that's a prank.
 For help getting on pull requests and merges best to contact me [personally](mailto:kevinmanda92@gmail.com)
 
 ## PREVIEW
-<img src="https://https://github.com/G-Titan/malepa_redesign/assets/145937671/8916a499-abe9-4150-bd08-477f0de749c7" width="200" height="400">
-<img src=" " width="200" height="400">
+<img src="./assets/images/begin.jpg" width="200" height="400"><img src="./assets/images/login.jpg" width="200" height="400">
 
 
-<img src="https://https://github.com/G-Titan/malepa_redesign/assets/145937671/9a46a167-1121-48ef-b8ad-13c2fb047627" width="200" height="400">
-<img src="https://https://https://github.com/G-Titan/malepa_redesign/assets/145937671/de5ac2d6-5206-4038-9877-44b61897d062" width="200" height="400">
+<img src="./assets/images/home.jpg" width="200" height="400"><img src="./assets/images/where2.jpg" width="200" height="400">
