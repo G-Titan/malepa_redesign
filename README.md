@@ -31,7 +31,7 @@ This project is a starting point of rebuilding an educational grading system run
  - Website link: (demo version release date: 6/Apr/2024)
  - Android support: https://github.com/G-Titan/malepa_redesign/releases
  - Windows support: (demo release date 6/May/2024)
- - IOS support: (This build may run on any device but we decided to completely not support this platform. it's an organisational choice. if you want it, build it yourself)
+ - IOS support: (This build may run on any device but we decided to completely not support this platform. it's an organisational choice. if you want it, build it yourself or give me money)
  - Linux support: (Demo release date 6/May/2024)
 
 If you dont know what your device is using visit my [website](https://citynest.github.io/Life/) for more information on how to check your operating system information.... 
