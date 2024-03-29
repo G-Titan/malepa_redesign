@@ -39,8 +39,7 @@ If you dont know what your device is using visit my [website](https://citynest.g
 Yeh that's a prank.
 
 - [Lab: A playground for you to get started](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Usef![Screenshot_20240329_081503_com example malepa_redesign](https://github.com/G-Titan/malepa_redesign/assets/145937671/1ffcecc0-9e1d-45a1-bc91-4e8bec862e9c)
-ul Flutter samples](https://docs.flutter.dev/cookbook)
+- [Cookbook](https://docs.flutter.dev/cookbook)
 
 
 For help getting on pull requests and merges best to contact me [personally](mailto:kevinmanda92@gmail.com)
