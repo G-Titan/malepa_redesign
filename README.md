@@ -48,3 +48,7 @@ For help getting started on how to contribute, pull requests and merges best to 
 <img src="./assets/images/begin.jpg" width="200" height="400">  <img src="./assets/images/login.jpg" width="200" height="400">
 
 <img src="./assets/images/home.jpg" width="200" height="400">  <img src="./assets/images/where2.jpg" width="200" height="400">
+
+## Upcoming updates
+ - Account manager (free)
+ - Setting up registration
