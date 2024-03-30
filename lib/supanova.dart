@@ -72,7 +72,8 @@ class _SupaNovaState extends State<SupaNova> {
             ListTile(
               title: const Text('Home'),
               onTap: () {
-                print('Navigate to Home');
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => SupaNova()));
               },
             ),
             ListTile(
