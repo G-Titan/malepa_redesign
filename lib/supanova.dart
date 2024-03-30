@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart'; // Import for kDebugMode
 import 'package:malepa_redesign/services/AuthService.dart';
 import 'package:malepa_redesign/users/standard/FreeTier.dart';
-// Import the kIsDebug constant
 
 class SupaNova extends StatefulWidget {
   const SupaNova({super.key});
@@ -13,6 +13,7 @@ class SupaNova extends StatefulWidget {
 class _SupaNovaState extends State<SupaNova> {
   final AuthService _authService =
       AuthService(); // Create an instance of AuthService
+
   String selectedSeries = '';
 
   @override
@@ -42,17 +43,28 @@ class _SupaNovaState extends State<SupaNova> {
                     },
                     child: const CircleAvatar(
                       radius: 30,
-                      // Change the profile picture placeholder to an icon
                       child: Icon(Icons.person),
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
-                    'Admin mode',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
+                  // Use a FutureBuilder to display the user's email/username or "Admin mode"
+                  FutureBuilder<String>(
+                    future: _authService
+                        .currentUser(), // Your method to get the current user's info
+                    builder:
+                        (BuildContext context, AsyncSnapshot<String> snapshot) {
+                      // Determine the text to display
+                      String displayText = kDebugMode
+                          ? 'Admin mode'
+                          : (snapshot.hasData ? snapshot.data! : 'Loading...');
+                      return Text(
+                        displayText,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -91,7 +103,7 @@ class _SupaNovaState extends State<SupaNova> {
               title: const Text('Logout'),
               leading: const Icon(Icons.logout), // Icon for the logout button
               onTap: () => _authService.logout(
-                  context), // Call _logout function with context when ListTile is tapped
+                  context), // Call logout function with context when ListTile is tapped
             ),
           ],
         ),
@@ -105,7 +117,6 @@ class _SupaNovaState extends State<SupaNova> {
               children: [
                 IconButton(
                   onPressed: () {
-                    // Navigate to the FreeTier.dart file
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const FreeTier()),
@@ -117,7 +128,6 @@ class _SupaNovaState extends State<SupaNova> {
                 const SizedBox(width: 20),
                 IconButton(
                   onPressed: () {
-                    // Navigate to Security Settings screen
                     print('Navigate to Security Settings');
                   },
                   icon: const Icon(Icons.security),
@@ -126,7 +136,6 @@ class _SupaNovaState extends State<SupaNova> {
                 const SizedBox(width: 20),
                 IconButton(
                   onPressed: () {
-                    // Navigate to App Settings screen
                     print('Navigate to App Settings');
                   },
                   icon: const Icon(Icons.settings),
@@ -166,7 +175,6 @@ class _SupaNovaState extends State<SupaNova> {
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 20),
-                        // Add the contents of the selected series here
                         Text(
                           'Contents of $selectedSeries...\n\n THIS IS A DEMO',
                           style: const TextStyle(fontSize: 16),
@@ -180,27 +188,10 @@ class _SupaNovaState extends State<SupaNova> {
     );
   }
 
-  final List<String> seriesOptions = [
+  List<String> seriesOptions = [
     'JCE - February/2012',
     'JCE - November/2013',
     'JCE - November/2014',
     'JCE - November/2015',
-    // Add more series options here...
-  ];
-}
-
-void logout(BuildContext context) {
-  // Implement logout logic here
-  // For example, you can call AuthService.logout() if you have a logout method in your AuthService class
-  //AuthService.logout(context);
-
-  // Navigate back to the main.dart screen
-  // Navigator.popUntil(context, ModalRoute.withName('/'));
-  print('Logout triggered');
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: SupaNova(),
-  ));
+  ]; // Example series options
 }

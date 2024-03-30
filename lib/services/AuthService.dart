@@ -37,6 +37,13 @@ class AuthService {
     }
   }
 
+  // Add to your AuthService class
+  Future<String> currentUser() async {
+    final user = FirebaseAuth.instance.currentUser;
+    return user?.email ??
+        ""; // Return the email if the user is logged in, otherwise return an empty string
+  }
+
   Future<bool> isInternetAvailable() async {
     var connectivityResult = await Connectivity().checkConnectivity();
     return connectivityResult != ConnectivityResult.none;
