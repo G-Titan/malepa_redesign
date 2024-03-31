@@ -78,7 +78,7 @@ class _SupaNovaState extends State<SupaNova> {
               },
             ),
             ListTile(
-              title: const Text('Registration'),
+              title: const Text('Enrollment'),
               onTap: () {
                 // Replace the current print statement with navigation code
                 Navigator.push(

@@ -28,9 +28,7 @@ class _RegFormState extends State<RegForm> {
     'Music',
     'Physical Education',
     'General Science',
-    'Setswana',
-    'Commerce & Office procedures',
-    'Commerce & Accounting' // This is optional for foreign students
+    'Setswana'
   ];
   List<String> selectedCoreSubjects = [
     'English',
@@ -56,14 +54,14 @@ class _RegFormState extends State<RegForm> {
     super.initState();
     // Placeholder logic for release mode and login state check
     isInReleaseMode = kReleaseMode;
-    isLoggedIn = false; // Set to false for testing
+    isLoggedIn = true; // Set to false for testing
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('REGISTRATION (manual mode)'),
+        title: Text('Student enrollment (manual mode)'),
         actions: <Widget>[
           // AI Mode Button
           IconButton(
@@ -116,11 +114,9 @@ class _RegFormState extends State<RegForm> {
                         onChanged: (value) {
                           setState(() {
                             studentType = value.toString();
-                            if (studentType == 'Foreigner') {
-                              // Reset selected core subjects for foreigners
-                              selectedCoreSubjects = selectedCoreSubjects
-                                  .where((subject) => subject != 'Setswana')
-                                  .toList();
+                            // Add Setswana if not already selected
+                            if (!selectedCoreSubjects.contains('Setswana')) {
+                              selectedCoreSubjects.add('Setswana');
                             }
                           });
                         },
@@ -132,11 +128,9 @@ class _RegFormState extends State<RegForm> {
                         onChanged: (value) {
                           setState(() {
                             studentType = value.toString();
-                            if (studentType == 'Foreigner') {
-                              // Reset selected core subjects for foreigners
-                              selectedCoreSubjects = selectedCoreSubjects
-                                  .where((subject) => subject != 'Setswana')
-                                  .toList();
+                            // Remove Setswana if selectedCoreSubjects contains it
+                            if (selectedCoreSubjects.contains('Setswana')) {
+                              selectedCoreSubjects.remove('Setswana');
                             }
                           });
                         },
