@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:malepa_redesign/users/standard/FreeTier.dart';
 
 class RegForm extends StatefulWidget {
+  const RegForm({super.key});
+
   @override
   _RegFormState createState() => _RegFormState();
 }
@@ -61,11 +63,11 @@ class _RegFormState extends State<RegForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Student enrollment (manual mode)'),
+        title: const Text('Student enrollment (manual mode)'),
         actions: <Widget>[
           // AI Mode Button
           IconButton(
-            icon: Icon(Icons.camera_alt),
+            icon: const Icon(Icons.camera_alt),
             onPressed: () {
               // Implement AI Mode functionality
               // This could include capturing information via camera and processing it
@@ -75,7 +77,7 @@ class _RegFormState extends State<RegForm> {
             },
           ),
           IconButton(
-            icon: Icon(Icons.attach_file),
+            icon: const Icon(Icons.attach_file),
             onPressed: () {
               // Placeholder for upload functionality
               // Here you might open a file picker or similar functionality
@@ -94,13 +96,13 @@ class _RegFormState extends State<RegForm> {
             children: <Widget>[
               Card(
                 elevation: 4,
-                margin: EdgeInsets.symmetric(vertical: 8.0),
+                margin: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
+                      const Text(
                         'Student Type',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -108,7 +110,7 @@ class _RegFormState extends State<RegForm> {
                         ),
                       ),
                       RadioListTile(
-                        title: Text('Local'),
+                        title: const Text('Local'),
                         value: 'Local',
                         groupValue: studentType,
                         onChanged: (value) {
@@ -122,7 +124,7 @@ class _RegFormState extends State<RegForm> {
                         },
                       ),
                       RadioListTile(
-                        title: Text('Foreigner'),
+                        title: const Text('Foreigner'),
                         value: 'Foreigner',
                         groupValue: studentType,
                         onChanged: (value) {
@@ -141,13 +143,13 @@ class _RegFormState extends State<RegForm> {
               ),
               Card(
                 elevation: 4,
-                margin: EdgeInsets.symmetric(vertical: 8.0),
+                margin: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
+                      const Text(
                         'Core Subjects (Required)',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -162,20 +164,20 @@ class _RegFormState extends State<RegForm> {
                             // Disable core subjects checkbox
                           },
                         );
-                      }).toList(),
+                      }),
                     ],
                   ),
                 ),
               ),
               Card(
                 elevation: 4,
-                margin: EdgeInsets.symmetric(vertical: 8.0),
+                margin: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
+                      const Text(
                         'Optional Subjects',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -196,7 +198,7 @@ class _RegFormState extends State<RegForm> {
                             });
                           },
                         );
-                      }).toList(),
+                      }),
                     ],
                   ),
                 ),
@@ -206,7 +208,7 @@ class _RegFormState extends State<RegForm> {
                   // Check if the app is in release mode
                   if (!isInReleaseMode) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text(
                             'This feature is only available in release mode.'),
                       ),
@@ -217,7 +219,7 @@ class _RegFormState extends State<RegForm> {
                   // Check if the user is logged in
                   if (!isLoggedIn) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text('Please log in to proceed.'),
                       ),
                     );
@@ -242,7 +244,7 @@ class _RegFormState extends State<RegForm> {
                   // Verify required fields are not empty
                   if (!areFieldsFilled()) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text('Please fill all required fields.'),
                       ),
                     );
@@ -253,11 +255,11 @@ class _RegFormState extends State<RegForm> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          FreeTier(), // The next form stage widget
+                          const FreeTier(), // The next form stage widget
                     ),
                   );
                 },
-                child: Text('Next'),
+                child: const Text('Next'),
               ),
             ],
           ),
@@ -269,7 +271,7 @@ class _RegFormState extends State<RegForm> {
   // Placeholder functionality for AI and Manual buttons
   void _showFeatureUnderDevelopmentMessage() {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+      const SnackBar(
         content: Text("This feature is under development."),
       ),
     );

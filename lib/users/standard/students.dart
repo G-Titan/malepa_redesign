@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 
 class LocalStudentInfoScreen extends StatelessWidget {
+  const LocalStudentInfoScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Local Student Information'),
+        title: const Text('Local Student Information'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // Add fields to collect local student information here
-            TextField(
+            const TextField(
               decoration: InputDecoration(labelText: 'First Name'),
             ),
-            TextField(
+            const TextField(
               decoration: InputDecoration(labelText: 'Last Name'),
             ),
             // Add more fields as needed for local student information
@@ -23,7 +25,7 @@ class LocalStudentInfoScreen extends StatelessWidget {
               onPressed: () {
                 // Implement logic to save local student information
               },
-              child: Text('Save'),
+              child: const Text('Save'),
             ),
           ],
         ),
@@ -33,21 +35,23 @@ class LocalStudentInfoScreen extends StatelessWidget {
 }
 
 class ForeignStudentInfoScreen extends StatelessWidget {
+  const ForeignStudentInfoScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Foreign Student Information'),
+        title: const Text('Foreign Student Information'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // Add fields to collect foreign student information here
-            TextField(
+            const TextField(
               decoration: InputDecoration(labelText: 'First Name'),
             ),
-            TextField(
+            const TextField(
               decoration: InputDecoration(labelText: 'Last Name'),
             ),
             // Add more fields as needed for foreign student information
@@ -55,7 +59,7 @@ class ForeignStudentInfoScreen extends StatelessWidget {
               onPressed: () {
                 // Implement logic to save foreign student information
               },
-              child: Text('Save'),
+              child: const Text('Save'),
             ),
           ],
         ),

@@ -74,7 +74,7 @@ class _SupaNovaState extends State<SupaNova> {
               title: const Text('Home'),
               onTap: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => SupaNova()));
+                    MaterialPageRoute(builder: (context) => const SupaNova()));
               },
             ),
             ListTile(
@@ -83,7 +83,7 @@ class _SupaNovaState extends State<SupaNova> {
                 // Replace the current print statement with navigation code
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => RegForm()),
+                  MaterialPageRoute(builder: (context) => const RegForm()),
                 );
               },
             ),
