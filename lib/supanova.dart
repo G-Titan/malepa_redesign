@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart'; // Import for kDebugMode
 import 'package:malepa_redesign/services/AuthService.dart';
 import 'package:malepa_redesign/users/standard/FreeTier.dart';
+import 'package:malepa_redesign/services/RegForm.dart';
 
 class SupaNova extends StatefulWidget {
   const SupaNova({super.key});
@@ -79,7 +80,11 @@ class _SupaNovaState extends State<SupaNova> {
             ListTile(
               title: const Text('Registration'),
               onTap: () {
-                print('Navigate to Registration');
+                // Replace the current print statement with navigation code
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegForm()),
+                );
               },
             ),
             ListTile(
