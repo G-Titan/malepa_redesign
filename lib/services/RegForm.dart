@@ -57,6 +57,11 @@ class _RegFormState extends State<RegForm> {
     // Placeholder logic for release mode and login state check
     isInReleaseMode = kReleaseMode;
     isLoggedIn = true; // Set to false for testing
+
+    // Initialize selectedCoreSubjects with Setswana if the student type is Local
+    if (studentType == 'Local' && !selectedCoreSubjects.contains('Setswana')) {
+      selectedCoreSubjects.add('Setswana');
+    }
   }
 
   @override
