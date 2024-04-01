@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:malepa_redesign/users/standard/FreeTier.dart';
 
 class RegForm extends StatefulWidget {
-  const RegForm({super.key});
+  const RegForm({Key? key}) : super(key: key);
 
   @override
   _RegFormState createState() => _RegFormState();
@@ -46,10 +46,21 @@ class _RegFormState extends State<RegForm> {
 
   TextEditingController nameController = TextEditingController();
   TextEditingController surnameController = TextEditingController();
+  TextEditingController middleNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController birthdayController = TextEditingController();
+  TextEditingController birthRegNumberController = TextEditingController();
   TextEditingController idNumberController = TextEditingController();
+  TextEditingController passportNumberController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController postalAddressController = TextEditingController();
+  TextEditingController physicalAddressController = TextEditingController();
+  TextEditingController centerController = TextEditingController();
+  TextEditingController candidateController = TextEditingController();
+  TextEditingController enrollDateController = TextEditingController();
+
+  List<bool> genderSelection = [true, false]; // true for Boys, false for Girls
 
   @override
   void initState() {
@@ -99,172 +110,585 @@ class _RegFormState extends State<RegForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Card(
-                elevation: 4,
-                margin: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              ExpansionTile(
+                title: const Text('Student Information'),
+                children: [
+                  // Input fields for student information
+                  TextFormField(
+                    decoration: const InputDecoration(labelText: 'Name'),
+                    controller: nameController,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(labelText: 'Surname'),
+                    controller: surnameController,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(labelText: 'Middle Name'),
+                    controller: middleNameController,
+                  ),
+                  TextFormField(
+                    decoration:
+                        const InputDecoration(labelText: 'Date of Birth'),
+                    controller: birthdayController,
+                    keyboardType: TextInputType.datetime,
+                    onTap: () async {
+                      DateTime? date = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime.now(),
+                      );
+                      if (date != null) {
+                        birthdayController.text = date.toString();
+                      }
+                    },
+                  ),
+                  TextFormField(
+                    decoration:
+                        const InputDecoration(labelText: 'Birth Reg Number'),
+                    controller: birthRegNumberController,
+                    keyboardType: TextInputType.number,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(labelText: 'ID Number'),
+                    controller: idNumberController,
+                    keyboardType: TextInputType.number,
+                  ),
+                  TextFormField(
+                    decoration:
+                        const InputDecoration(labelText: 'Passport Number'),
+                    controller: passportNumberController,
+                  ),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Gender',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  ToggleButtons(
                     children: <Widget>[
-                      const Text(
-                        'Student Type',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                      RadioListTile(
+                      Text('Boys'),
+                      Text('Girls'),
+                    ],
+                    isSelected: genderSelection,
+                    onPressed: (int index) {
+                      setState(() {
+                        for (int buttonIndex = 0;
+                            buttonIndex < genderSelection.length;
+                            buttonIndex++) {
+                          if (buttonIndex == index) {
+                            genderSelection[buttonIndex] = true;
+                          } else {
+                            genderSelection[buttonIndex] = false;
+                          }
+                        }
+                      });
+                    },
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: const Text('Student Type'),
+                children: [
+                  // Radio buttons for student type
+                  Column(
+                    children: <Widget>[
+                      ListTile(
                         title: const Text('Local'),
-                        value: 'Local',
-                        groupValue: studentType,
-                        onChanged: (value) {
-                          setState(() {
-                            studentType = value.toString();
-                            // Add Setswana if not already selected
-                            if (!selectedCoreSubjects.contains('Setswana')) {
-                              selectedCoreSubjects.add('Setswana');
-                            }
-                          });
-                        },
-                      ),
-                      RadioListTile(
-                        title: const Text('Foreigner'),
-                        value: 'Foreigner',
-                        groupValue: studentType,
-                        onChanged: (value) {
-                          setState(() {
-                            studentType = value.toString();
-                            // Remove Setswana if selectedCoreSubjects contains it
-                            if (selectedCoreSubjects.contains('Setswana')) {
-                              selectedCoreSubjects.remove('Setswana');
-                            }
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Card(
-                elevation: 4,
-                margin: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      const Text(
-                        'Core Subjects (Required)',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                      ...selectedCoreSubjects.map((subject) {
-                        return CheckboxListTile(
-                          title: Text(subject),
-                          value: true,
-                          onChanged: (value) {
-                            // Disable core subjects checkbox
-                          },
-                        );
-                      }),
-                    ],
-                  ),
-                ),
-              ),
-              Card(
-                elevation: 4,
-                margin: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      const Text(
-                        'Optional Subjects',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                      ...optionalSubjects.map((subject) {
-                        return CheckboxListTile(
-                          title: Text(subject),
-                          value: selectedOptionalSubjects.contains(subject),
+                        leading: Radio(
+                          value: 'Local',
+                          groupValue: studentType,
                           onChanged: (value) {
                             setState(() {
-                              if (value!) {
-                                selectedOptionalSubjects.add(subject);
-                              } else {
-                                selectedOptionalSubjects.remove(subject);
+                              studentType = value.toString();
+                              // Add Setswana if not already selected
+                              if (!selectedCoreSubjects.contains('Setswana')) {
+                                selectedCoreSubjects.add('Setswana');
                               }
                             });
                           },
-                        );
-                      }),
+                        ),
+                      ),
+                      ListTile(
+                        title: const Text('Foreigner'),
+                        leading: Radio(
+                          value: 'Foreigner',
+                          groupValue: studentType,
+                          onChanged: (value) {
+                            setState(() {
+                              studentType = value.toString();
+                              // Remove Setswana if selectedCoreSubjects contains it
+                              if (selectedCoreSubjects.contains('Setswana')) {
+                                selectedCoreSubjects.remove('Setswana');
+                              }
+                            });
+                          },
+                        ),
+                      ),
                     ],
                   ),
-                ),
+                ],
+              ),
+              ExpansionTile(
+                title: const Text('Core Subjects (Required)'),
+                children: [
+                  // Checkbox list for core subjects
+                  Column(
+                    children: coreSubjects.map((subject) {
+                      return CheckboxListTile(
+                        title: Text(subject),
+                        value: selectedCoreSubjects.contains(subject),
+                        onChanged: (value) {
+                          setState(() {
+                            if (value!) {
+                              selectedCoreSubjects.add(subject);
+                            } else {
+                              selectedCoreSubjects.remove(subject);
+                            }
+                          });
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: const Text('Optional Subjects'),
+                children: [
+                  // Checkbox list for optional subjects
+                  Column(
+                    children: optionalSubjects.map((subject) {
+                      return CheckboxListTile(
+                        title: Text(subject),
+                        value: selectedOptionalSubjects.contains(subject),
+                        onChanged: (value) {
+                          setState(() {
+                            if (value!) {
+                              selectedOptionalSubjects.add(subject);
+                            } else {
+                              selectedOptionalSubjects.remove(subject);
+                            }
+                          });
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: const Text('Contact Information'),
+                children: [
+                  // Input fields for contact information
+                  TextFormField(
+                    decoration: const InputDecoration(labelText: 'Email'),
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+                  TextFormField(
+                    decoration:
+                        const InputDecoration(labelText: 'Phone/Cell Number'),
+                    controller: phoneController,
+                    keyboardType: TextInputType.phone,
+                  ),
+                  TextFormField(
+                    decoration:
+                        const InputDecoration(labelText: 'Postal Address'),
+                    controller: postalAddressController,
+                  ),
+                  TextFormField(
+                    decoration:
+                        const InputDecoration(labelText: 'Physical Address'),
+                    controller: physicalAddressController,
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: const Text('BEC'),
+                children: [
+                  // Text next to checkbox
+                  Row(
+                    children: [
+                      const Text('Is Bocodol candidate'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Is already sitting for an exam with BEC'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Is DOSET'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  // Add more rows with text and checkboxes as needed
+
+                  Row(
+                    children: [
+                      const Text('Is back to school candidate'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  TextFormField(
+                    decoration:
+                        const InputDecoration(labelText: 'Previous center'),
+                    controller: centerController,
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+
+                  TextFormField(
+                    decoration: const InputDecoration(
+                        labelText: 'Previous candidate number'),
+                    controller: candidateController,
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+
+                  TextFormField(
+                    decoration: const InputDecoration(
+                        labelText: 'Date of registration'),
+                    controller: enrollDateController,
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+
+                  Row(
+                    children: [
+                      const Text('Is repeater candidate'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: const Text('Special needs type'),
+                children: [
+                  Row(
+                    children: [
+                      const Text('Blind'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Deaf'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Hard of hearing'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Learning difficulties'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Low vision'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Medical condition'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Other type of disability'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: const Text('Access arrangement'),
+                children: [
+                  Row(
+                    children: [
+                      const Text('Assistive Technology Devices'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Braille'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Coloured Paper'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Enlarged Print'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Extra - Time'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Modified paper - Hearing Impairment'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Oral Response'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Preferrential Sitting'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Prompter'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Reader'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Rest - Breaks'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Scribe'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Separate Room'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Other'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: const Text('Supporting Documents'),
+                children: [
+                  // Input fields for contact information
+                  Row(
+                    children: [
+                      const Text('Assesment report'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Center report'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Medical report'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('ID'),
+                      Checkbox(
+                        value: false,
+                        onChanged: (bool? value) {
+                          // Checkbox logic
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Check if the app is in release mode
-                  if (!isInReleaseMode) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text(
-                            'This feature is only available in release mode.'),
-                      ),
-                    );
-                    return;
-                  }
-
-                  // Check if the user is logged in
-                  if (!isLoggedIn) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Please log in to proceed.'),
-                      ),
-                    );
-                    return;
-                  }
-
-                  // Additional Validation Here:
-                  // For demonstration, let's assume you have form keys for validating form fields
-                  // Example: if (!_formKey.currentState.validate()) return;
-                  // You can add your specific field checks here
-
-                  // Verify required fields are not empty (Pseudo-code)
-                  bool areFieldsFilled() {
-                    return nameController.text.isNotEmpty &&
-                        surnameController.text.isNotEmpty &&
-                        addressController.text.isNotEmpty &&
-                        emailController.text.isNotEmpty &&
-                        birthdayController.text.isNotEmpty &&
-                        idNumberController.text.isNotEmpty;
-                  }
-
-                  // Verify required fields are not empty
-                  if (!areFieldsFilled()) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Please fill all required fields.'),
-                      ),
-                    );
-                    return;
-                  }
-                  // If all validations pass, proceed to the next stage
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          const FreeTier(), // The next form stage widget
+                  // Show Snackbar
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('THIS IS A DEMO!'),
                     ),
                   );
                 },
-                child: const Text('Next'),
+                child: const Text('Verify & Proceed'),
               ),
             ],
           ),
@@ -281,4 +705,10 @@ class _RegFormState extends State<RegForm> {
       ),
     );
   }
+}
+
+void main() {
+  runApp(const MaterialApp(
+    home: RegForm(),
+  ));
 }
