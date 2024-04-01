@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kReleaseMode;
-import 'package:malepa_redesign/users/standard/FreeTier.dart';
+import 'package:malepa_redesign/services/medic.dart';
 
 class RegForm extends StatefulWidget {
   const RegForm({Key? key}) : super(key: key);
@@ -82,22 +82,13 @@ class _RegFormState extends State<RegForm> {
         title: const Text('Student enrollment (manual mode)'),
         actions: <Widget>[
           // AI Mode Button
-          IconButton(
-            icon: const Icon(Icons.camera_alt),
-            onPressed: () {
-              // Implement AI Mode functionality
-              // This could include capturing information via camera and processing it
-              _showFeatureUnderDevelopmentMessage();
 
-              // to fill the form automatically
-            },
-          ),
           IconButton(
-            icon: const Icon(Icons.attach_file),
+            icon: const Icon(Icons.auto_mode_outlined),
             onPressed: () {
               // Placeholder for upload functionality
-              // Here you might open a file picker or similar functionality
-              _showFeatureUnderDevelopmentMessage();
+              // Here you might open a file picker or similar functionalit
+              MedicHelper.artificialIntelligence(context);
 
               // This could include uploading documents or information to be processed
             },
@@ -168,10 +159,6 @@ class _RegFormState extends State<RegForm> {
                     ),
                   ),
                   ToggleButtons(
-                    children: <Widget>[
-                      Text('Boys'),
-                      Text('Girls'),
-                    ],
                     isSelected: genderSelection,
                     onPressed: (int index) {
                       setState(() {
@@ -186,6 +173,10 @@ class _RegFormState extends State<RegForm> {
                         }
                       });
                     },
+                    children: const <Widget>[
+                      Text('Boy'),
+                      Text('Girl'),
+                    ],
                   ),
                 ],
               ),
@@ -681,27 +672,17 @@ class _RegFormState extends State<RegForm> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Show Snackbar
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('THIS IS A DEMO!'),
-                    ),
-                  );
+                  // Show Snackbar// Define the error message
+                  //if (_formKey.currentState!.validate()) {}
+                  String name = nameController.text;
+                  String email = emailController.text;
+                  MedicHelper.verifyNproceed(context, name, email);
                 },
                 child: const Text('Verify & Proceed'),
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  // Placeholder functionality for AI and Manual buttons
-  void _showFeatureUnderDevelopmentMessage() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("This feature is under development."),
       ),
     );
   }
